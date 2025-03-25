@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { useRouter } from "next/router";
 import { cn } from "@/lib/utils";
+import { ActiveLink } from "../active-link/active-link";
 
 export function Header() {
   const router = useRouter()
@@ -15,9 +16,11 @@ export function Header() {
           <Link href='/'>Logo</Link>
 
           <nav className="flex items-center gap-6">
-            <Link href='/' className={cn('text-sm font-medium transition-colors hover:text-blue-500', isHomePage ? 'text-blue-500' : 'text-muted-foreground')}>Home</Link>
-            <Link href='/blog' className={cn('text-sm font-medium transition-colors hover:text-blue-500', isBlogPage ? 'text-blue-500' : 'text-muted-foreground')}>Blog</Link>
-            <Button variant='secondary'>Start</Button>
+            <ActiveLink href='/'>Home</ActiveLink>
+            <ActiveLink href='/blog'>Blog</ActiveLink>
+            <Button variant='secondary' asChild>
+              <Link href='/start'>Start</Link>
+            </Button>
           </nav>
         </div>
       </div>
