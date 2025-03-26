@@ -24,8 +24,6 @@
   --color-gray-800: #0B0C0F;
 
   --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
   
   --font-sans: var(--font-sans);
   --font-inter: var(--font-inter);
@@ -82,7 +80,6 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-xl: calc(var(--radius) + 4px);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -142,10 +139,9 @@ body {
 }
 
 @layer components {
-  .container {
-    @apply max-w-[60.375rem] mx-auto px-8;
+  .main-container {
+    @apply max-w-4xl mx-auto px-8;
   }
-
   .heading-hg {
     @apply text-heading-hg leading-120 font-bold font-sans
   }
@@ -172,6 +168,9 @@ body {
   }
   .body-xs {
     @apply text-body-xs leading-150 font-normal font-inter
+  }
+  .body-tag {
+    @apply text-body-tag leading-normal font-medium font-inter
   }
   .action-md {
     @apply text-action-md leading-normal font-medium font-inter
