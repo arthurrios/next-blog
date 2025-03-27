@@ -1,4 +1,4 @@
-import { Inter /* PT_Sans_Caption */ } from 'next/font/google'
+import { Inter, PT_Sans_Caption } from 'next/font/google'
 
 import { Footer } from '../footer'
 import { Header } from '../header'
@@ -12,11 +12,11 @@ const inter = Inter({
   subsets: ['latin'],
 })
 
-// const sansCaption = PT_Sans_Caption({
-//   variable: '--font-sans',
-//   subsets: ['latin'],
-//   weight: ['400', '700'],
-// })
+export const sansCaption = PT_Sans_Caption({
+  variable: '--font-sans',
+  subsets: ['latin'],
+  weight: ['400', '700'],
+})
 
 export function Layout({ children }: LayoutProps) {
   return (

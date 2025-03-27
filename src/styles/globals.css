@@ -22,10 +22,8 @@
   --color-gray-600: #14161A;
   --color-gray-700: #101216;
   --color-gray-800: #0B0C0F;
-
-  --radius-lg: var(--radius);
   
-  --font-sans: var(--font-sans);
+  --font-sans: "PT_Sans_Caption", sans-serif;
   --font-inter: var(--font-inter);
 
   --text-heading-hg: 48px;
