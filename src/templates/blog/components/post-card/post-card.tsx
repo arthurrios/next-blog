@@ -36,7 +36,7 @@ export function PostCard({
         </div>
         <Image
           src={image}
-          alt=""
+          alt={title}
           width={288}
           height={144}
           className="h-36 w-full rounded-md object-cover object-center"
@@ -54,7 +54,7 @@ export function PostCard({
             <div className="relative size-5 overflow-hidden rounded-full border border-blue-200">
               <Image
                 src={author?.avatar}
-                alt=""
+                alt={author?.name}
                 fill
                 className="rounded-md object-cover"
               />

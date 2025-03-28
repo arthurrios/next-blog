@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { PostCard } from './components/post-card'
 import { PostCardGrid } from './components/post-grid-card'
 import { allPosts } from 'contentlayer/generated'
+import { Inbox } from 'lucide-react'
 
 export function BlogList() {
   const router = useRouter()
@@ -11,7 +12,12 @@ export function BlogList() {
     ? `Search results for "${query}"`
     : 'Tips and strategies to boost your business'
 
-  const posts = allPosts
+  const posts = query
+    ? allPosts.filter((post) =>
+        post.title.toLowerCase()?.includes(query.toLowerCase()),
+      )
+    : allPosts
+  const hasPosts = posts.length > 0
 
   return (
     <div className="flex h-full flex-col pt-25 pb-20 md:px-0 md:pt-44 md:pb-34">
@@ -29,19 +35,30 @@ export function BlogList() {
             <Search />
           </div>
         </div>
-        <PostCardGrid>
-          {posts.map((post) => (
-            <PostCard
-              key={post._id}
-              title={post.title}
-              description={post.description}
-              slug={post.slug}
-              image={post.image}
-              date={new Date(post.date).toLocaleDateString('en-US')}
-              author={{ avatar: post.author?.avatar, name: post.author?.name }}
-            />
-          ))}
-        </PostCardGrid>
+        {hasPosts ? (
+          <PostCardGrid>
+            {posts.map((post) => (
+              <PostCard
+                key={post._id}
+                title={post.title}
+                description={post.description}
+                slug={post.slug}
+                image={post.image}
+                date={new Date(post.date).toLocaleDateString('en-US')}
+                author={{
+                  avatar: post.author?.avatar,
+                  name: post.author?.name,
+                }}
+              />
+            ))}
+          </PostCardGrid>
+        ) : (
+          <div className="flex flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed border-cyan-300 p-8 md:p-12">
+            <Inbox className="size-12 text-cyan-200" />
+
+            <p className="body-sm text-center text-cyan-200">No posts found</p>
+          </div>
+        )}
       </div>
     </div>
   )
