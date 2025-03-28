@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export function FeatureSection() {
   return (
-    <section className="main-container grid gap-6 bg-gray-700 py-20 md:grid-cols-2 md:pt-20 md:pb-30">
+    <section className="main-container grid gap-6 bg-gray-700 pt-10 pb-18 md:grid-cols-2 md:pt-20 md:pb-30">
       <div className="flex flex-col gap-4 rounded-xl bg-gray-500 p-6 md:p-12">
         <span className="body-tag w-fit rounded-sm bg-blue-400 px-2 py-1 text-blue-200 uppercase">
           Simple

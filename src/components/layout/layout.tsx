@@ -12,7 +12,7 @@ export function Layout({ children }: LayoutProps) {
       className={`${inter.variable} ${sansCaption.variable} relative flex min-h-screen flex-col bg-gray-700`}
     >
       <Header />
-      <main className="mb-12 flex flex-1 flex-col">{children}</main>
+      <main className="flex flex-1 flex-col">{children}</main>
       <Footer />
     </div>
   )
