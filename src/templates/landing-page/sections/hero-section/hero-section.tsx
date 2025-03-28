@@ -1,12 +1,12 @@
 import { ArrowRight, Clock, Store } from 'lucide-react'
-import { Button } from '../ui/button'
+import { Button } from '../../../../components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export function HeroSection() {
   return (
     <section className="relative">
-      <div className="main-container z-10 flex flex-col pt-24 md:flex-row md:pt-40 md:pb-20 lg:flex-row lg:pt-40">
+      <div className="main-container z-10 flex flex-col pt-28 md:flex-row md:pt-40 md:pb-20 lg:flex-row lg:pt-40">
         <div className="flex max-w-[640px] flex-col items-center justify-center gap-10 md:items-start md:gap-14 lg:items-start lg:gap-14">
           <div className="flex flex-col items-center justify-center gap-6 md:items-start md:gap-8 lg:items-start lg:gap-8">
             <h1 className="heading-lg text-center text-gray-100 md:text-start md:text-heading-hg lg:text-start lg:text-heading-hg">
@@ -40,7 +40,7 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-      <div className="absolute top-16 hidden md:right-0 md:flex 2xl:right-80">
+      <div className="absolute top-24 hidden md:right-0 md:flex 2xl:right-80">
         <Image
           src="/hero-section.svg"
           alt="Icons illustrations of store, tag and bag"

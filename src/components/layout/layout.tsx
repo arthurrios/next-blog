@@ -1,6 +1,6 @@
 import { inter, sansCaption } from '@/styles/fonts'
-import { Footer } from '../footer'
-import { Header } from '../header'
+import { Header } from './header'
+import { Footer } from './footer'
 
 type LayoutProps = {
   children: React.ReactNode
