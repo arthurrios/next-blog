@@ -1,6 +1,7 @@
 import { inter, sansCaption } from '@/styles/fonts'
 import { Header } from './header'
 import { Footer } from './footer'
+import { CallToAction } from '@/templates/landing-page/sections'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -13,6 +14,7 @@ export function Layout({ children }: LayoutProps) {
     >
       <Header />
       <main className="flex flex-1 flex-col">{children}</main>
+      <CallToAction />
       <Footer />
     </div>
   )

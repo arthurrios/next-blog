@@ -2,6 +2,7 @@ import { Search } from '@/components/search'
 import { useRouter } from 'next/router'
 import { PostCard } from './components/post-card'
 import { PostCardGrid } from './components/post-grid-card'
+import { allPosts } from 'contentlayer/generated'
 
 export function BlogList() {
   const router = useRouter()
@@ -9,6 +10,8 @@ export function BlogList() {
   const pageTitle = query
     ? `Search results for "${query}"`
     : 'Tips and strategies to boost your business'
+
+  const posts = allPosts
 
   return (
     <div className="flex h-full flex-col pt-25 pb-20 md:px-0 md:pt-44 md:pb-34">
@@ -27,14 +30,17 @@ export function BlogList() {
           </div>
         </div>
         <PostCardGrid>
-          <PostCard
-            title="Transformando seu negócio em uma loja virtual"
-            description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online, o Site.Set é a solução perfeita para você. Criar uma loja virtual de sucesso nunca foi tão fácil. Com nossa plataforma intuitiva, você pode criar um site profissional para sua loja em minutos, sem precisar de conhecimentos técnicos."
-            slug="/transforming-your-business-into-an-online-store"
-            image="/assets/first-post.png"
-            date="12/20/2024"
-            author={{ avatar: '/customer-01.png', name: 'Aspen Dokidis' }}
-          />
+          {posts.map((post) => (
+            <PostCard
+              key={post._id}
+              title={post.title}
+              description={post.description}
+              slug={post.slug}
+              image={post.image}
+              date={new Date(post.date).toLocaleDateString('en-US')}
+              author={{ avatar: post.author?.avatar, name: post.author?.name }}
+            />
+          ))}
         </PostCardGrid>
       </div>
     </div>
