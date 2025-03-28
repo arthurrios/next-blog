@@ -1,18 +1,11 @@
 import { HeartHandshake, PaintbrushVertical, Store } from 'lucide-react'
-import Image from 'next/image'
 
 export function SupportSection() {
   return (
     <section className="relative">
-      <Image
-        src="/background-support.svg"
-        alt="Background with line graphics"
-        width={500}
-        height={500}
-        className="absolute inset-0 z-0 h-full w-full object-cover"
-      />
+      <div className="absolute inset-0 bg-[url('/background-support.svg')] bg-cover bg-center bg-no-repeat" />
 
-      <div className="relative bg-radial from-cyan-300/10 to-gray-600 py-12 md:py-30">
+      <div className="relative py-12 md:py-30">
         <div className="main-container relative flex flex-col items-center gap-12">
           <h2 className="heading-md md:text-heading-xl">
             Your affiliates store, simple, the way it should be

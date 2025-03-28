@@ -1,19 +1,12 @@
 import Link from 'next/link'
 import { Button } from '../ui/button'
 import { ArrowRight, Store } from 'lucide-react'
-import Image from 'next/image'
 
 export function CallToAction() {
   return (
     <section className="relative">
-      <Image
-        src="/background-footer.svg"
-        alt="Background with line graphics"
-        width={500}
-        height={500}
-        className="absolute inset-0 z-0 h-full w-full object-cover"
-      />
-      <div className="relative z-0 bg-radial from-cyan-300/10 to-gray-600 py-14 md:pt-22 md:pb-18">
+      <div className="absolute inset-0 bg-[url('/background-footer.svg')] bg-cover bg-center bg-no-repeat" />
+      <div className="relative z-0 py-14 md:pt-22 md:pb-18">
         <div className="main-container flex flex-col items-center">
           <div className="absolute -top-7 flex size-14 items-center justify-center rounded-full bg-cyan-300 md:-top-8 md:size-16">
             <Store className="text-cyan-100" />
