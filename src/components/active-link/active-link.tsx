@@ -8,6 +8,7 @@ type ActiveLinkProps = {
 
 export function ActiveLink({ children, href, ...props }: ActiveLinkProps) {
   const router = useRouter()
+
   const isCurrentPath = router.asPath === href || router.asPath === props.as
 
   return (

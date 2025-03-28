@@ -19,6 +19,21 @@ See what our platform offers:
 1. **Responsive store**  
    Your store will be optimized for all devices, ensuring a perfect shopping experience on any screen.
 
+   ```css
+   /* Example media query for mobile responsiveness */
+   @media (max-width: 768px) {
+     .product-grid {
+       grid-template-columns: repeat(2, 1fr);
+     }
+     .checkout-form {
+       padding: 1rem;
+     }
+   }
+   ```
+
+   > "The responsive design tools helped us achieve a 40% increase in mobile conversions"  
+   > – Sarah MobileFirst, E-Commerce Director
+
 2. Inventory management  
    ```
    - Organize products

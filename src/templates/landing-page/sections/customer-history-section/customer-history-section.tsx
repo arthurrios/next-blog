@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { Avatar } from '@/components/avatar'
 
 export function CustomerStorySection() {
   const customerStories = [
@@ -40,7 +40,19 @@ export function CustomerStorySection() {
               </p>
 
               <div className="flex items-center gap-3">
-                <div className="relative size-10 overflow-hidden rounded-full">
+                <Avatar.Container>
+                  <Avatar.Image
+                    src={customerStory.author.avatar}
+                    alt={customerStory.author.name}
+                  />
+                  <Avatar.Content>
+                    <Avatar.Title>{customerStory.author.name}</Avatar.Title>
+                    <Avatar.Description>
+                      {customerStory.author.role}
+                    </Avatar.Description>
+                  </Avatar.Content>
+                </Avatar.Container>
+                {/* <div className="relative size-10 overflow-hidden rounded-full">
                   <Image
                     src={customerStory.author.avatar}
                     alt={customerStory.author.name}
@@ -56,7 +68,7 @@ export function CustomerStorySection() {
                   <span className="body-xs text-gray-300">
                     {customerStory.author.role}
                   </span>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}

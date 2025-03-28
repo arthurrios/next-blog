@@ -24,16 +24,38 @@ Here's what our platform offers:
    ```
 
 2. Conversion Rate Optimization  
-   Identify drop-off points in your sales funnel with:
-   - Funnel visualization
-   - Exit rate analysis
-   - A/B testing tools
+   Test different strategies using our A/B testing framework:
 
-3. *Product Performance Reports*  
-   See your best/worst selling items at a glance with:
-   - Sales trends
-   - Inventory turnover
-   - Profitability metrics
+   ```ruby
+   # Configure A/B test variants
+   experiment :checkout_flow do
+     variant :original, weight: 50
+     variant :single_page, weight: 30
+     variant :guest_checkout, weight: 20
+   end
+   ```
+
+   > "By implementing structured A/B tests, we improved checkout completion rates by 22%"  
+   > – Alex Convertwell, UX Lead
+
+3. **Sales Performance Metrics**  
+   Monitor key indicators with our dashboard API:
+
+   ```python
+   # Get daily sales metrics
+   def get_sales_metrics(date):
+       return db.query(
+           total_orders=Count(Order.id),
+           total_revenue=Sum(Order.amount),
+           avg_order_value=Avg(Order.amount)
+       ).filter(order_date=date)
+   ```
+
+   | Metric          | Description                     | Sample Value |
+   |------------------|---------------------------------|-------------:|
+   | Conversion Rate  | Completed purchases/visitors    |        2.8%  |
+   | Avg Order Value  | Average revenue per order       |      $149.99 |
+   | CAC              | Customer acquisition cost       |       $45.00 |
 
 4. **Geographic Heatmaps**  
    Understand where your customers are located through:

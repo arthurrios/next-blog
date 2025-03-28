@@ -15,7 +15,19 @@ Expanding your e-commerce business requires careful planning. Our platform provi
 ## Key Scaling Features
 
 1. **Inventory Management**  
-   Handle increased demand with:
+   Handle increased demand with our REST API:
+
+   ```python
+   # Set low stock alert
+   def set_stock_alert(product_id, threshold):
+       db.update('products', 
+           where={'id': product_id},
+           data={'low_stock_threshold': threshold}
+       ).then(
+           lambda: publish_alert('stock', product_id)
+       )
+   ```
+
    - Automated stock alerts
    - Supplier integration
    - Multi-location tracking
@@ -33,10 +45,25 @@ Expanding your e-commerce business requires careful planning. Our platform provi
    - Knowledge base integration
 
 4. **Performance Monitoring**  
-   Track growth metrics including:
-   - Server uptime
-   - Page load speeds
-   - Conversion rates
+   Track growth metrics with our monitoring SDK:
+
+   ```javascript
+   // Track custom performance metrics
+   perf.monitor('checkout_flow', {
+     entryPoint: 'cart_view',
+     metrics: ['load_time', 'render_time', 'api_latency'],
+     thresholds: {
+       load_time: 2000,
+       render_time: 500
+     }
+   });
+   ```
+
+   | Metric          | Threshold | Alert Channel |
+   |------------------|----------:|:--------------:|
+   | Server Uptime    |    99.99% |    Slack       |
+   | Page Load        |     2s    |    Email       |
+   | Conversion Rate  |      2.5% |    SMS         |
 
 5. International Expansion Tools  
    Go global with features like:

@@ -1,3 +1,4 @@
+import { Avatar } from '@/components/avatar'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -29,7 +30,7 @@ export function PostCard({
       className="w-full max-w-2xl overflow-hidden rounded-xl border border-gray-400 bg-gray-600 transition-all duration-300 hover:border hover:border-blue-300"
     >
       {/* Post Content */}
-      <div className="relative overflow-hidden p-2">
+      <div className="relative flex h-full flex-col overflow-hidden p-2">
         {/* Date Container */}
         <div className="absolute top-0 right-0 rounded-bl-[10px] bg-gray-600 pt-2.5 pr-[14px] pb-1.5 pl-2.5 backdrop-blur-sm">
           <span className="body-xs text-gray-300">{date}</span>
@@ -43,24 +44,22 @@ export function PostCard({
         />
 
         {/* Post Info */}
-        <div className="px-2 pt-4">
-          <h2 className="heading-xs mb-2 line-clamp-3 text-gray-100">
-            {title}
-          </h2>
+        <div className="flex flex-grow flex-col gap-3 px-2 pt-4">
+          <div className="flex flex-grow flex-col">
+            <h2 className="heading-xs mb-2 line-clamp-2 text-gray-100">
+              {title}
+            </h2>
+            <p className="body-xs line-clamp-2 flex-grow text-gray-300">
+              {description}
+            </p>
+          </div>
 
-          <p className="body-xs text-gray-300">{description}</p>
-
-          <div className="mt-3 flex items-center gap-2 border-t border-gray-400 pt-3 pb-2">
-            <div className="relative size-5 overflow-hidden rounded-full border border-blue-200">
-              <Image
-                src={author?.avatar}
-                alt={author?.name}
-                fill
-                className="rounded-md object-cover"
-              />
-            </div>
-
-            <span className="body-sm text-gray-300">{author?.name}</span>
+          {/* Post Footer */}
+          <div className="mt-auto flex items-center gap-2 border-t border-gray-400 pt-3 pb-1">
+            <Avatar.Container>
+              <Avatar.Image src={author.avatar} alt={author.name} size="xs" />
+              <Avatar.Description>{author.name}</Avatar.Description>
+            </Avatar.Container>
           </div>
         </div>
       </div>
