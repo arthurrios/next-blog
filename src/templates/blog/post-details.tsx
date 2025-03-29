@@ -6,30 +6,26 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
-import { allPosts } from 'contentlayer/generated'
+import { Post } from 'contentlayer/generated'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { Markdown } from '@/components/markdown'
 import { useShare } from '@/hooks'
 import { ShareButtons } from '@/templates/blog/components/share-buttons'
 
-export function PostDetails() {
-  const router = useRouter()
+export type PostDetailsProps = {
+  post: Post
+}
 
-  const slug = router.query.slug as string
-  const post = allPosts.find(
-    (post) => post.slug?.toLowerCase() === slug.toLowerCase(),
-  )!
-
-  const postUrl = `https://site.set/blog/${slug}`
+export function PostDetails({ post }: PostDetailsProps) {
+  const publishedDate = new Date(post.date).toLocaleDateString('en-US')
+  const postUrl = `https://site.set/blog/${post.slug}`
 
   const { shareButtons } = useShare({
     url: postUrl,
     title: post.title,
     text: post.description,
   })
-  const publishedDate = new Date(post.date).toLocaleDateString('en-US')
 
   return (
     <main className="main-container">
@@ -94,10 +90,8 @@ export function PostDetails() {
         </article>
 
         <aside className="space-y-5">
-          <div className="rounded-xl bg-gray-700">
-            <h2 className="heading-xs hidden text-gray-100 md:mb-5 md:flex">
-              Share
-            </h2>
+          <div className="flex-col gap-5 rounded-xl bg-gray-700 md:hidden lg:mb-5 lg:flex">
+            <h2 className="heading-xs text-gray-100">Share</h2>
 
             <ShareButtons shareButtons={shareButtons} />
           </div>
