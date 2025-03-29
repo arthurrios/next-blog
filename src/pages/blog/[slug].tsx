@@ -11,6 +11,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Markdown } from '@/components/markdown'
+import { Button } from '@/components/ui/button'
+import { useShare } from '@/hooks'
 
 export default function PostPage() {
   const router = useRouter()
@@ -20,11 +22,18 @@ export default function PostPage() {
     (post) => post.slug?.toLowerCase() === slug.toLowerCase(),
   )!
 
+  const publishedDate = new Date(post.date).toLocaleDateString('en-US')
+  const postUrl = `https://site.set/blog/${slug}`
+
+  const { shareButtons } = useShare({
+    url: postUrl,
+    title: post.title,
+    text: post.description,
+  })
+
   if (!post) {
     return <div>Post not found</div>
   }
-
-  const publishedDate = new Date(post.date).toLocaleDateString('en-US')
 
   return (
     <main className="main-container">
@@ -81,6 +90,29 @@ export default function PostPage() {
             </div>
           </div>
         </article>
+
+        <aside className="space-y-5">
+          <div className="rounded-xl bg-gray-700">
+            <h2 className="heading-xs hidden text-gray-100 md:mb-5 md:flex">
+              Share
+            </h2>
+
+            <div className="space-y-2">
+              {shareButtons.map((provider) => (
+                <Button
+                  key={provider.provider}
+                  onClick={() => provider.action()}
+                  className="action-sm flex justify-start gap-2 rounded-lg md:w-56 md:py-3"
+                  variant="outline"
+                  size="sm"
+                >
+                  {provider.icon}
+                  {provider.name}
+                </Button>
+              ))}
+            </div>
+          </div>
+        </aside>
       </div>
     </main>
   )
