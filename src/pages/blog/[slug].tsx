@@ -11,8 +11,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Markdown } from '@/components/markdown'
-import { Button } from '@/components/ui/button'
 import { useShare } from '@/hooks'
+import { ShareButtons } from '@/templates/blog/components/share-buttons'
 
 export default function PostPage() {
   const router = useRouter()
@@ -22,7 +22,6 @@ export default function PostPage() {
     (post) => post.slug?.toLowerCase() === slug.toLowerCase(),
   )!
 
-  const publishedDate = new Date(post.date).toLocaleDateString('en-US')
   const postUrl = `https://site.set/blog/${slug}`
 
   const { shareButtons } = useShare({
@@ -30,28 +29,31 @@ export default function PostPage() {
     title: post.title,
     text: post.description,
   })
-
-  if (!post) {
-    return <div>Post not found</div>
-  }
+  const publishedDate = new Date(post.date).toLocaleDateString('en-US')
 
   return (
     <main className="main-container">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild className="action-sm">
-              <Link href="/blog">Blog</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
+      <div className="flex items-center justify-between gap-3">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild className="action-sm">
+                <Link href="/blog">Blog</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
 
-          <BreadcrumbSeparator className="text-gray-300" />
+            <BreadcrumbSeparator className="text-gray-300" />
 
-          <BreadcrumbItem>
-            <span className="action-sm text-blue-200">{post?.title}</span>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+            <BreadcrumbItem>
+              <span className="action-sm text-blue-200">{post?.title}</span>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <div className="lg:hidden">
+          <ShareButtons shareButtons={shareButtons} />
+        </div>
+      </div>
 
       <div className="grid grid-cols-1 pt-5 pb-20 md:gap-6 md:pt-8 lg:grid-cols-[1fr_300px] lg:pb-34">
         <article className="overflow-hidden rounded-xl border border-gray-400 bg-gray-600">
@@ -97,20 +99,7 @@ export default function PostPage() {
               Share
             </h2>
 
-            <div className="space-y-2">
-              {shareButtons.map((provider) => (
-                <Button
-                  key={provider.provider}
-                  onClick={() => provider.action()}
-                  className="action-sm flex justify-start gap-2 rounded-lg md:w-56 md:py-3"
-                  variant="outline"
-                  size="sm"
-                >
-                  {provider.icon}
-                  {provider.name}
-                </Button>
-              ))}
-            </div>
+            <ShareButtons shareButtons={shareButtons} />
           </div>
         </aside>
       </div>
