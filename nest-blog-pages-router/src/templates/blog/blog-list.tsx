@@ -23,8 +23,6 @@ export function BlogList({ posts }: BlogListProps) {
     : posts
   const hasPosts = postList.length > 0
 
-  console.log(hasPosts)
-
   return (
     <div className="flex h-full flex-col pb-20 md:px-0 md:pt-4 md:pb-34">
       <div className="main-container flex w-full flex-col gap-6 md:gap-14">
