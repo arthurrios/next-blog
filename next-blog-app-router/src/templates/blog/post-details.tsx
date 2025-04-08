@@ -10,7 +10,6 @@ import { Post } from 'contentlayer/generated'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Markdown } from '@/components/markdown'
-import { useShare } from '@/hooks'
 import { ShareButtons } from '@/templates/blog/components/share-buttons'
 
 export type PostDetailsProps = {
@@ -20,12 +19,6 @@ export type PostDetailsProps = {
 export function PostDetails({ post }: PostDetailsProps) {
   const publishedDate = new Date(post.date).toLocaleDateString('en-US')
   const postUrl = `https://site.set/blog/${post.slug}`
-
-  const { shareButtons } = useShare({
-    url: postUrl,
-    title: post.title,
-    text: post.description,
-  })
 
   return (
     <main className="main-container">
@@ -47,7 +40,11 @@ export function PostDetails({ post }: PostDetailsProps) {
         </Breadcrumb>
 
         <div className="lg:hidden">
-          <ShareButtons shareButtons={shareButtons} />
+          <ShareButtons
+            url={postUrl}
+            title={post.title}
+            description={post.description}
+          />
         </div>
       </div>
 
@@ -92,8 +89,11 @@ export function PostDetails({ post }: PostDetailsProps) {
         <aside className="space-y-5">
           <div className="flex-col gap-5 rounded-xl bg-gray-700 md:hidden lg:mb-5 lg:flex">
             <h2 className="heading-xs text-gray-100">Share</h2>
-
-            <ShareButtons shareButtons={shareButtons} />
+            <ShareButtons
+              url={postUrl}
+              title={post.title}
+              description={post.description}
+            />
           </div>
         </aside>
       </div>

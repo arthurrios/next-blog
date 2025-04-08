@@ -1,11 +1,21 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
-import { ShareButtonProps } from '@/hooks'
+import { useShare } from '@/hooks'
 
 type ShareButtonsProps = {
-  shareButtons: ShareButtonProps[]
+  url: string
+  title: string
+  description: string
 }
 
-export function ShareButtons({ shareButtons }: ShareButtonsProps) {
+export function ShareButtons({ description, title, url }: ShareButtonsProps) {
+  const { shareButtons } = useShare({
+    url,
+    title,
+    text: description,
+  })
+
   return (
     <div className="flex items-center gap-2 lg:flex-col lg:items-start">
       {shareButtons.map((provider) => (
