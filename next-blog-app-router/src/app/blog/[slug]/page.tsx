@@ -8,6 +8,12 @@ type BlogPostPageProps = {
   }>
 }
 
+export async function generateStaticParams() {
+  return allPosts.map((post) => ({
+    slug: post.slug,
+  }))
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
   const post = allPosts.find((post) => post.slug === slug)
