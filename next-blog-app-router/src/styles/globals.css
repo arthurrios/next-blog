@@ -141,39 +141,39 @@ body {
     @apply md:max-w-4xl md:mx-auto px-4 lg:px-0 w-full;
   }
   .heading-hg {
-    @apply text-heading-hg leading-120 font-bold font-sans
+    @apply text-heading-hg leading-120 font-bold font-sans text-gray-100
   }
   .heading-xl {
-    @apply text-heading-xl leading-120 font-bold font-sans
+    @apply text-heading-xl leading-120 font-bold font-sans text-gray-100
   }
   .heading-lg {
-    @apply text-heading-lg leading-120 font-bold font-sans
+    @apply text-heading-lg leading-120 font-bold font-sans text-gray-100
   }
   .heading-md {
-    @apply text-heading-md leading-120 font-bold font-sans
+    @apply text-heading-md leading-120 font-bold font-sans text-gray-100
   }
   .heading-sm {
-    @apply text-heading-sm leading-120 font-bold font-sans
+    @apply text-heading-sm leading-120 font-bold font-sans text-gray-100
   }
   .heading-xs {
-    @apply text-heading-xs leading-120 font-bold font-sans
+    @apply text-heading-xs leading-120 font-bold font-sans text-gray-100
   }
   .body-md {
-    @apply text-body-md leading-150 font-normal font-inter
+    @apply text-body-md leading-150 font-normal font-inter text-gray-100
   }
   .body-sm {
-    @apply text-body-sm leading-150 font-normal font-inter
+    @apply text-body-sm leading-150 font-normal font-inter text-gray-100
   }
   .body-xs {
-    @apply text-body-xs leading-150 font-normal font-inter
+    @apply text-body-xs leading-150 font-normal font-inter text-gray-100
   }
   .body-tag {
-    @apply text-body-tag leading-normal font-medium font-inter
+    @apply text-body-tag leading-normal font-medium font-inter text-gray-100
   }
   .action-md {
-    @apply text-action-md leading-normal font-medium font-inter
+    @apply text-action-md leading-normal font-medium font-inter text-gray-100
   }
   .action-sm {
-    @apply text-action-sm leading-normal font-medium font-inter
+    @apply text-action-sm leading-normal font-medium font-inter text-gray-100
   }
 }
